@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
     db:
         build: ../Database
@@ -20,8 +20,10 @@ services:
             - db
             - datastore
         depends_on:
-            - db
-            - datastore
+            db:
+                condition: service_healthy
+            datastore:
+                condition: service_started
         ports:
             - "8000:80"
 
