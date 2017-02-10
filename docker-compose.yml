@@ -1,0 +1,22 @@
+version: '2'
+services:
+    db:
+        build: ../Database
+        image: turnierserver:database
+        volumes:
+            - dbdata:/var/lib/postgresql/data
+    datastore:
+        build: ../Datastore
+        image: turnierserver:datastore
+        volumes:
+            - ftpdata:/home/ftpusers
+            - ftpusers:/etc/pure-ftpd/passwd
+
+
+volumes:
+    dbdata:
+        external: true
+    ftpdata:
+        external: true
+    ftpusers:
+        external: true
