@@ -5,6 +5,7 @@ services:
         image: turnierserver:database
         volumes:
             - dbdata:/var/lib/postgresql/data
+   
     datastore:
         build: ../Datastore
         image: turnierserver:datastore
@@ -12,6 +13,17 @@ services:
             - ftpdata:/home/ftpusers
             - ftpusers:/etc/pure-ftpd/passwd
 
+    api:
+        build: ../API
+        image: turnierserver:api
+        links:
+            - db
+            - datastore
+        depends_on:
+            - db
+            - datastore
+        ports:
+            - "8000:80"
 
 volumes:
     dbdata:
