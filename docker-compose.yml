@@ -27,6 +27,14 @@ services:
         ports:
             - "8000:80"
 
+    backend:
+        build: ../Backend/docker
+        image: turnierserver:backend
+        links:
+            - datastore
+        depends_on:
+            - datastore
+
 volumes:
     dbdata:
         external: true
