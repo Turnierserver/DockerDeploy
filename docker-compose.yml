@@ -38,6 +38,10 @@ services:
         depends_on:
             - datastore
 
+    compiler:
+        build: ../Compilers
+        image: turnierserver:compiler
+
 volumes:
     dbdata:
         external: true
