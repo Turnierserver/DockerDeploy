@@ -19,16 +19,19 @@ services:
         links:
             - db
             - datastore
+            - backend
         depends_on:
             db:
                 condition: service_healthy
             datastore:
                 condition: service_started
+            backend:
+                condition: service_started
         ports:
-            - "8000:80"
+            - "8000:8000"
 
     backend:
-        build: ../Backend/docker
+        build: ../Backend
         image: turnierserver:backend
         links:
             - datastore
