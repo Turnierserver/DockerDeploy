@@ -1,13 +1,13 @@
 version: '2.1'
 services:
     db:
-        build: ../Database
+        build: Database
         image: turnierserver:database
         volumes:
             - dbdata:/var/lib/postgresql/data
    
     datastore:
-        build: ../Datastore
+        build: Datastore
         image: turnierserver:datastore
         volumes:
             - ftpdata:/home/ftpusers
