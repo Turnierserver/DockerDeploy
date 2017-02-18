@@ -31,7 +31,7 @@ services:
             - "8000:8000"
 
     backend:
-        build: ../Backend/docker
+        build: ../Backend
         image: turnierserver:backend
         links:
             - datastore
